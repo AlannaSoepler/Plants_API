@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,18 @@ class PlantFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'breed' => fake()->name(),
+            'image' => fake()->imageUrl(640,480),
+            'info' => fake()->realText(150),
+            'season' => fake()->randomElement([
+                'Spring',
+                'Summer',
+                'Autumn',
+                'Winter'
+            ]),
+            'provider' => Str::random(10),
+            'available' =>fake()->boolean(),
+            'likes' => fake()->numberBetween(0,10000)
         ];
     }
 }
