@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PlantCollection;
+use App\Http\Resources\PlantResource;
 use App\Models\Plant;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class PlantController extends Controller
      */
     public function index()
     {
-        //
+        return new PlantCollection(Plant::all());
     }
 
     /**
@@ -25,7 +27,10 @@ class PlantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $plant = Plant::create($request->only([
+            'name', 'breed', 'image', 'info', 'season', 'environment', 'hight', 'provider', 'available', 'likes'
+        ]));
+        return new PlantResource($plant);
     }
 
     /**

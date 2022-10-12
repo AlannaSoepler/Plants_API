@@ -14,6 +14,17 @@ class PlantResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'name' => $this->name,
+            'breed' => $this->breed,
+            'image' => $this->image,
+            'info' => $this->info,
+            'season' => $this->season,
+            'environment' => $this->environment,
+            'hight' => $this->hight,
+            'provider' => $this->provider,
+            'available' => $this->available,
+            'likes' => $this->likes,
+        ];
     }
 }
