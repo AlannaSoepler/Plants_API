@@ -20,9 +20,7 @@ return new class extends Migration
             $table->string('image');
             $table->text('info');
             $table->enum('season',['spring','summer','autumn', 'winter']);
-            $table->enum('water',['spring','avrage','autumn', 'winter']);
-            $table->enum('sun',['shade','sun','both', 'winter']);
-            $table->enum('environment',['indoor','outdoor','both']);
+            $table->enum('environment',['indoors','outdoors','both']);
             $table->float('hight');
             $table->string('provider');
             $table->boolean('available');

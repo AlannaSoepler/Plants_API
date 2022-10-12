@@ -18,16 +18,22 @@ class PlantFactory extends Factory
     public function definition()
     {
         return [
+            'name' => fake()->name(),
             'breed' => fake()->name(),
             'image' => fake()->imageUrl(640,480),
-            'info' => fake()->realText(150),
+            'info' => fake()->paragraph($nbSentences = 3, $variableNbSentences = true),
             'season' => fake()->randomElement([
                 'Spring',
                 'Summer',
                 'Autumn',
                 'Winter'
+            ]),'environment' => fake()->randomElement([
+                'indoors',
+                'outdoors',
+                'both'
             ]),
-            'provider' => Str::random(10),
+            'hight' => fake()->numberBetween(0.5,100),
+            'provider' => fake()->name(),
             'available' =>fake()->boolean(),
             'likes' => fake()->numberBetween(0,10000)
         ];
