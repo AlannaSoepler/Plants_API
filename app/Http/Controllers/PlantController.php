@@ -53,7 +53,11 @@ class PlantController extends Controller
      */
     public function update(Request $request, Plant $plant)
     {
-        //
+        $plant->update($request->only([
+            'name', 'breed', 'image', 'info', 'season', 'environment', 'hight', 'provider', 'available', 'likes'
+        ]));
+
+        return new PlantResource($plant);
     }
 
     /**
