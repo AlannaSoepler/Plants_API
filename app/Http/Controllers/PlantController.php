@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Resources\PlantCollection;
 use App\Http\Resources\PlantResource;
 use App\Models\Plant;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
+
 
 class PlantController extends Controller
 {
@@ -68,6 +70,7 @@ class PlantController extends Controller
      */
     public function destroy(Plant $plant)
     {
-        //
+        $plant->delete();
+        return response()->json(null, 204);
     }
 }
