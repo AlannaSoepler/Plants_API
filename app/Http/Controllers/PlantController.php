@@ -37,11 +37,11 @@ class PlantController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Plant  $plant
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\PlantResource
      */
     public function show(Plant $plant)
     {
-        //
+        return new PlantResource($plant);
     }
 
     /**
