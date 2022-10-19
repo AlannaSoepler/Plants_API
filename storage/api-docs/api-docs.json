@@ -1,0 +1,27 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Plants API",
+        "description": "Alanna plant API",
+        "contact": {
+            "email": "alanna.amrs@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "description": "Home Page",
+                "responses": {
+                    "default": {
+                        "description": "Welcome Page"
+                    }
+                }
+            }
+        }
+    }
+}
