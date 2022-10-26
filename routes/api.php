@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/plants', PlantController::class);
+Route::apiResource('/provider', ProviderController::class)->only(['index', 'show']);
+
