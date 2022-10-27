@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('logo')->nullable();
+            $table->text('info');
+            $table->string('email')->unique();
+            $table->string('telephone');
+            
             $table->timestamps();
         });
     }

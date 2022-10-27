@@ -79,9 +79,14 @@
                                         "example": "the hibiscus is a wonderful plant"
                                     },
                                     "season": {
-                                        "type": "enum",
-                                        "format": "enum",
-                                        "example": "Me"
+                                        "type": "string",
+                                        "default": "summer",
+                                        "enum": [
+                                            "summer",
+                                            "fall",
+                                            "winter",
+                                            "spring"
+                                        ]
                                     },
                                     "environment": {
                                         "type": "string",

@@ -56,7 +56,7 @@ class PlantController extends Controller
      *            @OA\Property(property="breed", type="string", format="string", example="malvaceae"),
      *            @OA\Property(property="image", type="string", format="string", example="https://xyz.com"),
      *            @OA\Property(property="info", type="string", format="string", example="the hibiscus is a wonderful plant"),
-     *            @OA\Property(property="season", type="enum", format="enum", example="Me"),
+     *            @OA\Property(property="season", type="string", enum={"summer", "fall", "winter", "spring"}, default="summer"),
      *            @OA\Property(property="environment", type="string", format="string", example="Sunny"),
      *            @OA\Property(property="hight", type="integer", format="integer", example="1"),
      *            @OA\Property(property="provider", type="string", format="string", example="ThePlant.inc"),
