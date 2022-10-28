@@ -20,7 +20,6 @@ return new class extends Migration
             $table->text('info');
             $table->string('email')->unique();
             $table->string('telephone');
-            
             $table->timestamps();
         });
     }
