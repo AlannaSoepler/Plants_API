@@ -23,18 +23,13 @@ class PlantFactory extends Factory
             'image' => fake()->imageUrl(640,480),
             'info' => fake()->paragraph($nbSentences = 3, $variableNbSentences = true),
             'season' => fake()->randomElement([
-                'Spring',
-                'Summer',
-                'Autumn',
-                'Winter'
-            ]),'environment' => fake()->randomElement([
-                'indoors',
-                'outdoors',
-                'both'
+                'spring',
+                'summer',
+                'autumn',
+                'winter'
             ]),
-            'hight' => fake()->numberBetween(0.5,100),
+            'hight(m)' => fake()->randomFloat(2, 0, 100),
             'provider' => fake()->name(),
-            'available' =>fake()->boolean(),
             'likes' => fake()->numberBetween(0,10000)
         ];
     }

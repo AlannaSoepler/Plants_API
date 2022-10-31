@@ -17,14 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('breed');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->text('info');
-            $table->enum('season',['spring','summer','autumn', 'winter']);
-            $table->enum('environment',['indoors','outdoors','both']);
-            $table->float('hight');
+            $table->enum('season',['spring','summer','autumn', 'winter'])->default('spring');
+            $table->float('hight(m)');
             $table->string('provider');
-            $table->boolean('available');
-            $table->integer('likes');
+            $table->integer('likes')->nullable();
             $table->timestamps();
         });
     }

@@ -15,6 +15,6 @@ class ProviderSeeder extends Seeder
      */
     public function run()
     {
-        Provider::factory()->times(50)->create();
+        Provider::factory()->times(10)->create();
     }
 }
