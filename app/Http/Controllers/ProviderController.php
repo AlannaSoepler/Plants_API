@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Provider;
 use Illuminate\Http\Request;
+use App\Http\Resources\ProviderCollection;
 
 class ProviderController extends Controller
 {
@@ -14,7 +15,7 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        //
+        return new ProviderCollection(Provider::all());
     }
 
     /**
