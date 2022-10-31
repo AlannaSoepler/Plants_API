@@ -53,7 +53,10 @@ class ProviderController extends Controller
      */
     public function update(Request $request, Provider $provider)
     {
-        //
+        $provider->update($request->only([
+            'name', 'logo', 'info', 'email', 'telephone'
+        ]));
+        return new ProviderResource($provider);
     }
 
     /**
@@ -64,6 +67,7 @@ class ProviderController extends Controller
      */
     public function destroy(Provider $provider)
     {
-        //
+        $provider->delete();
+        return response()->json(null, 204);
     }
 }
