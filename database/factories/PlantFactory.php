@@ -13,6 +13,10 @@ class PlantFactory extends Factory
     /**
      * Define the model's default state.
      *
+     * The factory is used instead of manually assigning the values in each column. 
+     * Using the fake function, the factory has access to the faker library. 
+     * This library generates various kinds of data which will be used for testing and seeding.  
+     * 
      * @return array<string, mixed>
      */
     public function definition()

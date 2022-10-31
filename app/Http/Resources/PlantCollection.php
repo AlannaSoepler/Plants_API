@@ -9,6 +9,8 @@ class PlantCollection extends ResourceCollection
     /**
      * Transform the resource collection into an array.
      *
+     * The collection is used to return multiples of the plant resource
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */

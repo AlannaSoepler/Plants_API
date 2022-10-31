@@ -8,7 +8,9 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * Creating a new database table. This function accepts 2 parameters, the table name, 
+     * the other is the blueprint object that is used to define the table 
+     * 
      * @return void
      */
     public function up()
