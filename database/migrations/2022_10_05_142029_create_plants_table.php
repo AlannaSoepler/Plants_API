@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->text('info');
             $table->enum('season',['spring','summer','autumn', 'winter'])->default('spring');
-            $table->float('hight(m)');
+            $table->float('hight');
             $table->string('provider');
             $table->integer('likes')->nullable();
             $table->timestamps();
