@@ -9,8 +9,26 @@ use App\Http\Resources\ProviderCollection;
 
 class ProviderController extends Controller
 {
-    /**
+   /**
      * Display a listing of the resource.
+     *
+ * @OA\Get(
+ *     path="/api/providers",
+ *     description="Displays all the plants",
+ *     tags={"Providers"},
+     *      @OA\Response(
+        *          response=200,
+        *          description="Successful operation, Returns a list of Plants in JSON format"
+        *       ),
+        *      @OA\Response(
+        *          response=401,
+        *          description="Unauthenticated",
+        *      ),
+        *      @OA\Response(
+        *          response=403,
+        *          description="Forbidden"
+        *      )
+ * )
      *
      * @return \Illuminate\Http\Response
      */
