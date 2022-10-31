@@ -51,7 +51,7 @@ class PlantController extends Controller
      *      @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *            required={"name", "breed", "image", "info", "season", "hight", "provider", "likes"},
+     *            required={"name", "breed", "image", "info", "season", "hight", "provider","likes"},
      *            @OA\Property(property="name", type="string", format="string", example="hibiscus"),
      *            @OA\Property(property="breed", type="string", format="string", example="malvaceae"),
      *            @OA\Property(property="image", type="string", format="string", example="https://xyz.com"),

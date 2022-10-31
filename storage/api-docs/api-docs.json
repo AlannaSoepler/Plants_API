@@ -1,218 +1,193 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "title": "Plants API",
-        "description": "Alanna plant API",
-        "contact": {
-            "email": "alanna.amrs@gmail.com"
-        },
-        "license": {
-            "name": "Apache 2.0",
-            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
-        },
-        "version": "1.0.0"
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Plants API",
+    "description": "Alanna plant API",
+    "contact": {
+      "email": "alanna.amrs@gmail.com"
     },
-    "paths": {
-        "/api/plants": {
-            "get": {
-                "tags": [
-                    "Plants"
-                ],
-                "summary": "Display a listing of the resource.",
-                "description": "Displays all the plants",
-                "operationId": "6e2a3a91967b1e364c87b755cd5152f6",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation, Returns a list of Plants in JSON format"
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Plants"
-                ],
-                "summary": "Create a new Plant",
-                "description": "Stores the plant in the DB",
-                "operationId": "store",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "required": [
-                                    "name",
-                                    "breed",
-                                    "image",
-                                    "info",
-                                    "season",
-                                    "environment",
-                                    "hight",
-                                    "provider",
-                                    "available",
-                                    "likes"
-                                ],
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "format": "string",
-                                        "example": "hibiscus"
-                                    },
-                                    "breed": {
-                                        "type": "string",
-                                        "format": "string",
-                                        "example": "malvaceae"
-                                    },
-                                    "image": {
-                                        "type": "string",
-                                        "format": "string",
-                                        "example": "https://xyz.com"
-                                    },
-                                    "info": {
-                                        "type": "string",
-                                        "format": "string",
-                                        "example": "the hibiscus is a wonderful plant"
-                                    },
-                                    "season": {
-                                        "type": "string",
-                                        "default": "summer",
-                                        "enum": [
-                                            "summer",
-                                            "fall",
-                                            "winter",
-                                            "spring"
-                                        ]
-                                    },
-                                    "environment": {
-                                        "type": "string",
-                                        "format": "string",
-                                        "example": "Sunny"
-                                    },
-                                    "hight": {
-                                        "type": "integer",
-                                        "format": "integer",
-                                        "example": "1"
-                                    },
-                                    "provider": {
-                                        "type": "string",
-                                        "format": "string",
-                                        "example": "ThePlant.inc"
-                                    },
-                                    "available": {
-                                        "type": "boolean",
-                                        "format": "boolean",
-                                        "example": "1"
-                                    },
-                                    "likes": {
-                                        "type": "integer",
-                                        "format": "integer",
-                                        "example": "1"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "status": {
-                                            "type": "integer",
-                                            "example": ""
-                                        },
-                                        "data": {
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/plants/{id}": {
-            "get": {
-                "tags": [
-                    "Plants"
-                ],
-                "summary": "Display the specified resource.",
-                "description": "Gets a plant by ID",
-                "operationId": "5f7b2efcf3ae43a0485b376c550bcdbd",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Plant id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "Plants"
-                ],
-                "summary": "Delete a Plant",
-                "description": "Delete Plant",
-                "operationId": "destroy",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Id of a Plant",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "status_code": {
-                                            "type": "integer",
-                                            "example": "204"
-                                        },
-                                        "data": {
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/plants": {
+      "get": {
+        "tags": ["Plants"],
+        "summary": "Display a listing of the resource.",
+        "description": "Displays all the plants",
+        "operationId": "6e2a3a91967b1e364c87b755cd5152f6",
+        "responses": {
+          "200": {
+            "description": "Successful operation, Returns a list of Plants in JSON format"
+          },
+          "401": {
+            "description": "Unauthenticated"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
         }
+      },
+      "post": {
+        "tags": ["Plants"],
+        "summary": "Create a new Plant",
+        "description": "Stores the plant in the DB",
+        "operationId": "store",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "name",
+                  "breed",
+                  "image",
+                  "info",
+                  "season",
+                  "hight",
+                  "provider",
+                  "likes"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "hibiscus"
+                  },
+                  "breed": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "malvaceae"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "https://xyz.com"
+                  },
+                  "info": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "the hibiscus is a wonderful plant"
+                  },
+                  "season": {
+                    "type": "string",
+                    "default": "summer",
+                    "enum": ["summer", "fall", "winter", "spring"]
+                  },
+                  "hight": {
+                    "type": "integer",
+                    "format": "integer",
+                    "example": "1"
+                  },
+                  "provider": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "ThePlant.inc"
+                  },
+                  "likes": {
+                    "type": "integer",
+                    "format": "integer",
+                    "example": "1"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": ""
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/plants/{id}": {
+      "get": {
+        "tags": ["Plants"],
+        "summary": "Display the specified resource.",
+        "description": "Gets a plant by ID",
+        "operationId": "5f7b2efcf3ae43a0485b376c550bcdbd",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Plant id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "401": {
+            "description": "Unauthenticated"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Plants"],
+        "summary": "Delete a Plant",
+        "description": "Delete Plant",
+        "operationId": "destroy",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of a Plant",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status_code": {
+                      "type": "integer",
+                      "example": "204"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
     }
+  }
 }

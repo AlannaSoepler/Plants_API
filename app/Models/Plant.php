@@ -9,5 +9,6 @@ class Plant extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'breed', 'image', 'info', 'hight', 'provider', 'available', 'likes'];
+    protected $fillable = ['name', 'breed', 'image', 'info', 'hight', 'provider', 'likes'];
+    // protected $guarded = [];
 }
