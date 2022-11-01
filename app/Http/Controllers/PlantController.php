@@ -12,14 +12,15 @@ use Illuminate\Http\Request;
 
 class PlantController extends Controller
 {
-   /**
-     * Swagger is used to help describe the structure of the API so that machines can read them. 
+    /**
+        * Swagger is used to help describe the structure of the API so that machines can read them. 
      * Swagger helps to build interactive API documentation.
      * The paths is the same as if the user would have requested a get request from the url
      * The requests will be displayed under the PLants tag. To keep it organized 
      * The responses will show depending on if the request is a success nor if the user is trying to make an 
-     * illegal or forbidden request.  
-     * 
+     * illegal or forbidden request. 
+     */
+   /** 
  * @OA\Get(
  *     path="/api/plants",
  *     description="Displays all the plants",
@@ -55,7 +56,7 @@ class PlantController extends Controller
 
     /**
      * Here i decide the jason structure that will be displayed in the post request. 
-     * Here i tell it to display elements from the plants table. I am not required to display them all. 
+     * Here i tell it to elements from the plants table. I am not required to display them all. 
      * Here i make it possible for users to edit the elements. 
      * 
      * * @OA\Post(
@@ -88,10 +89,10 @@ class PlantController extends Controller
      * )
      *
      * Store a newly created resource in the plant table.
-     * The user sends a get request though the URL. This gets request will display all the plants in the plant table. 
-     * Using the route defined in the API.php it calls the store function in the plant controller and the store function. 
+     * The user sends a post request though the URL. 
+     * Using the route defined in the API.php it calls the store function in the plant controller. 
      * From here it takes all the data that was given by the user and stores it in the $plant variable 
-     * and then sends the data in the variable to the plant collection. 
+     * and then sends the data in the variable to the plant resource. 
      * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -150,8 +151,8 @@ class PlantController extends Controller
 
     /**
      * Update the specified resource in the plant table.
-     * The user sends a get request though the URL. This gets request will display all the plants in the plant table. 
-     * Using the route defined in the API.php it calls the store function in the plant controller and the store function. 
+     * The user sends a put request though the URL. This gets request will display all the plants in the plant table. 
+     * Using the route defined in the API.php it calls the update function in the plant controller. 
      * From here it takes all the data that was given by the user and stores it in the $plant variable and 
      * then sends the data in the variable to the plant collection. However, using the put request will completely delete and recreate.   
      *
