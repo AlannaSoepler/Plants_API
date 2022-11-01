@@ -3,14 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
+ Here is where one can register web routes for the application. These
+ routes are loaded by the RouteServiceProvider within a group which
+ contains the "web" middleware group. /
+ Defines routes that will be used by the web interface. 
+
 */
 
 Route::get('/', function () {
