@@ -13,8 +13,13 @@ use Illuminate\Http\Request;
 class PlantController extends Controller
 {
    /**
-     * Display a listing of the resource.
-     *
+     * Swagger is used to help describe the structure of the API so that machines can read them. 
+     * Swagger helps to build interactive API documentation.
+     * The paths is the same as if the user would have requested a get request from the url
+     * The requests will be displayed under the PLants tag. To keep it organized 
+     * The responses will show depending on if the request is a success nor if the user is trying to make an 
+     * illegal or forbidden request.  
+     * 
  * @OA\Get(
  *     path="/api/plants",
  *     description="Displays all the plants",
@@ -33,6 +38,14 @@ class PlantController extends Controller
         *      )
  * )
      *
+     * Display a listing of the resource.
+     * 
+     * The user sends a get request though the URL. 
+     * This gets request will display all the plants in the plant table. 
+     * Using the route defined in the API.php it calls the index function in the plant controller and the index function. 
+     * From here it takes all the data from the plant table and send it to the plant collection. 
+     * In the plant collection it will transform the resources into an array.
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -41,7 +54,10 @@ class PlantController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Here i decide the jason structure that will be displayed in the post request. 
+     * Here i tell it to display elements from the plants table. I am not required to display them all. 
+     * Here i make it possible for users to edit the elements. 
+     * 
      * * @OA\Post(
      *      path="/api/plants",
      *      operationId="store",
@@ -71,6 +87,12 @@ class PlantController extends Controller
      *     )
      * )
      *
+     * Store a newly created resource in the plant table.
+     * The user sends a get request though the URL. This gets request will display all the plants in the plant table. 
+     * Using the route defined in the API.php it calls the store function in the plant controller and the store function. 
+     * From here it takes all the data that was given by the user and stores it in the $plant variable 
+     * and then sends the data in the variable to the plant collection. 
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -83,7 +105,7 @@ class PlantController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 
       * @OA\Get(
     *     path="/api/plants/{id}",
     *     description="Gets a plant by ID",
@@ -109,6 +131,15 @@ class PlantController extends Controller
         *          description="Forbidden"
         *      )
  * )
+     * 
+     * Display the specified resource. 
+     * The user send a get request and the endpoint being the plant id. 
+     * The route in the api.php calls the plant controller and the show function 
+     * Instead of having a single id passed in. The this function now takes the entire model.
+     * It find the plant with the intended id and stores it in $plant. 
+     * From here it gets sent off to the plant resource which converts it into json. 
+     * 
+     * 
      * @param  \App\Models\Plant  $plant
      * @return \Illuminate\Http\PlantResource
      */
@@ -118,7 +149,11 @@ class PlantController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in the plant table.
+     * The user sends a get request though the URL. This gets request will display all the plants in the plant table. 
+     * Using the route defined in the API.php it calls the store function in the plant controller and the store function. 
+     * From here it takes all the data that was given by the user and stores it in the $plant variable and 
+     * then sends the data in the variable to the plant collection. However, using the put request will completely delete and recreate.   
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Plant  $plant
@@ -153,7 +188,7 @@ class PlantController extends Controller
      *       )
      *      )
      *  )
-     * Remove the specified resource from storage.
+     * Remove the specified resource from the plants table.
      *
      * @param  \App\Models\Plant  $plant
      * @return \Illuminate\Http\Response
@@ -162,6 +197,7 @@ class PlantController extends Controller
     {
         $plant->delete();
         // return response()->json(null, response::HTTP_NO_CONTENT);
+        //returns a http response of 204 (no content), if there is no content to display
         return response()->json(null, 204);
 
     }

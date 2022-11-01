@@ -24,8 +24,11 @@ class PlantFactory extends Factory
         return [
             'name' => fake()->name(),
             'breed' => fake()->name(),
+            //Creates a random url image with px size 640x480
             'image' => fake()->imageUrl(640,480),
+            //creates a paragraph consisting on 3 sentences 
             'info' => fake()->paragraph($nbSentences = 3, $variableNbSentences = true),
+            //randomly choose between the listed elements 
             'season' => fake()->randomElement([
                 'spring',
                 'summer',
@@ -34,6 +37,7 @@ class PlantFactory extends Factory
             ]),
             'hight' => fake()->randomFloat(2, 0, 100),
             'provider' => fake()->name(),
+            //random number between 0 - 10000
             'likes' => fake()->numberBetween(0,10000)
         ];
     }

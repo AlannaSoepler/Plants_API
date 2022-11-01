@@ -18,7 +18,7 @@
                 "tags": [
                     "Plants"
                 ],
-                "summary": "Display a listing of the resource.",
+                "summary": "Swagger is used to help describe the structure of the API so that machines can read them. \nSwagger helps to build interactive API documentation.\nThe paths",
                 "description": "Displays all the plants",
                 "operationId": "6e2a3a91967b1e364c87b755cd5152f6",
                 "responses": {
@@ -135,7 +135,6 @@
                 "tags": [
                     "Plants"
                 ],
-                "summary": "Display the specified resource.",
                 "description": "Gets a plant by ID",
                 "operationId": "5f7b2efcf3ae43a0485b376c550bcdbd",
                 "parameters": [
