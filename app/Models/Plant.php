@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Provider;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Plant extends Model
 {
@@ -19,5 +20,10 @@ class Plant extends Model
      */
     use HasFactory;
 
-    protected $fillable = ['name', 'breed', 'image', 'info', 'hight', 'provider', 'likes'];
+    protected $fillable = ['name', 'breed', 'image', 'info', 'hight', 'likes', 'provider_id'];
+
+    /**Adds the relationship to the table */
+    public function provider(){
+        return $this->belongsTo(Provider::class);
+    }
 }

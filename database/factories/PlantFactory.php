@@ -36,7 +36,7 @@ class PlantFactory extends Factory
                 'winter'
             ]),
             'hight' => fake()->randomFloat(2, 0, 100),
-            'provider' => fake()->name(),
+            // 'provider_id' => fake()->name(),
             //random number between 0 - 10000
             'likes' => fake()->numberBetween(0,10000)
         ];

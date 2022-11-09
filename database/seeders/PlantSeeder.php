@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Plant;
 use Illuminate\Database\Seeder;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PlantSeeder extends Seeder
@@ -19,6 +20,7 @@ class PlantSeeder extends Seeder
      */
     public function run()
     {
-        Plant::factory()->times(50)->create();
+        // Plant::factory()->times(50)->create();
+        // $this->call(DatabaseSeeder::class); 
     }
 }

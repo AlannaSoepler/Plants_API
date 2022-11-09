@@ -23,7 +23,7 @@ class PlantResource extends JsonResource
             'info' => $this->info,
             'season' => $this->season,
             'hight' => $this->hight,
-            'provider' => $this->provider,
+            'provider_id' => $this->provider->name,
             'likes' => $this->likes,
         ];
     }
