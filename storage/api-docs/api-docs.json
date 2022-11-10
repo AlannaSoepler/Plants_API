@@ -51,8 +51,8 @@
                                     "info",
                                     "season",
                                     "hight",
-                                    "provider",
-                                    "likes"
+                                    "likes",
+                                    "provider_id"
                                 ],
                                 "properties": {
                                     "name": {
@@ -90,15 +90,15 @@
                                         "format": "integer",
                                         "example": "1"
                                     },
-                                    "provider": {
-                                        "type": "string",
-                                        "format": "string",
-                                        "example": "ThePlant.inc"
-                                    },
                                     "likes": {
                                         "type": "integer",
                                         "format": "integer",
                                         "example": "1"
+                                    },
+                                    "provider": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "ThePlant.inc"
                                     }
                                 },
                                 "type": "object"
@@ -186,12 +186,12 @@
                                         "format": "integer",
                                         "example": "1"
                                     },
-                                    "provider_id": {
+                                    "likes": {
                                         "type": "integer",
                                         "format": "integer",
                                         "example": "1"
                                     },
-                                    "likes": {
+                                    "provider_id": {
                                         "type": "integer",
                                         "format": "integer",
                                         "example": "1"
