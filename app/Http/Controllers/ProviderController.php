@@ -120,40 +120,47 @@ class ProviderController extends Controller
     }
 
     /**
-     * 
-     * @OA\Put(
-     *      path="/api/providers",
-     *      operationId="update_provider",
-     *      tags={"Providers"},
-     *      summary="Update a Provider",
-     *      description="Stores the provider in the DB",
-     *      @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(
-     *            required={"id","name", "logo", "info", "email", "telephone"},
-     *            @OA\Property(property="id", type="number" example="1"),
-     *            @OA\Property(property="name", type="string", format="string", example="Plant inc."),
-     *            @OA\Property(property="logo", type="string", format="string", example="https://xyz.com"),
-     *            @OA\Property(property="info", type="string", format="string", example="Get wonderful plants"),
-     *            @OA\Property(property="email", type="string", format="string", example="abc@gmail.com"),
-     *            @OA\Property(property="telephone", type="integer", format="integer", example="123-546-3345")
-     *          )
-     *      ),
-     *     @OA\Response(
-     *          response=200, description="Success",
-     *          @OA\JsonContent(
-     *             @OA\Property(property="status", type="integer", example=""),
-     *             @OA\Property(property="data",type="object")
-     *          )
-     *      )
-     * )
-     * 
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\UpdateProviderRequest  $request
-     * @param  \App\Models\Provider  $provider
-     * @return \Illuminate\Http\Response
-     */
+    * @OA\Put(
+    *      path="/api/providers",
+    *      operationId="update_provider",
+    *      tags={"Providers"},
+    *      summary="Update a Provider",
+    *      description="Stores the provider in the DB",
+    *         @OA\Parameter(
+    *         name="id",
+    *         description="provider id",
+    *         required=true,
+    *         in="path",
+    *         @OA\Schema(
+    *         type="integer")
+    *         ),
+    *      @OA\RequestBody(
+    *         required=true,
+    *         @OA\JsonContent(
+    *            required={"id","name", "logo", "info", "email", "telephone"},
+    *            @OA\Property(property="id", type="number" example="1"),
+    *            @OA\Property(property="name", type="string", format="string", example="Plant inc."),
+    *            @OA\Property(property="logo", type="string", format="string", example="https://xyz.com"),
+    *            @OA\Property(property="info", type="string", format="string", example="Get wonderful plants"),
+    *            @OA\Property(property="email", type="string", format="string", example="abc@gmail.com"),
+    *            @OA\Property(property="telephone", type="integer", format="integer", example="123-546-3345")
+    *          )
+    *      ),
+    *     @OA\Response(
+    *          response=200, description="Success",
+    *          @OA\JsonContent(
+    *             @OA\Property(property="status", type="integer", example=""),
+    *             @OA\Property(property="data",type="object")
+    *          )
+    *      )
+    * )
+    * 
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\UpdateProviderRequest  $request
+    * @param  \App\Models\Provider  $provider
+    * @return \Illuminate\Http\Response
+    */
     public function update(UpdateProviderRequest $request, Provider $provider)
     {
         $provider->update($request->only([

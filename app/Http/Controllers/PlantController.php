@@ -156,6 +156,14 @@ class PlantController extends Controller
      *      tags={"Plants"},
      *      summary="Update a Plant",
      *      description="Stores the plant in the DB",
+     *         @OA\Parameter(
+    *          name="id",
+    *          description="Plant id",
+    *          required=true,
+    *          in="path",
+    *          @OA\Schema(
+    *          type="integer")
+    *          ),
      *      @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
