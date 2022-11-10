@@ -57,7 +57,7 @@ class ProviderController extends Controller
     *            @OA\Property(property="logo", type="string", format="string", example="https://xyz.com"),
     *            @OA\Property(property="info", type="string", format="string", example="Get wonderful plants"),
     *            @OA\Property(property="email", type="string", format="string", example="abc@gmail.com"),
-    *            @OA\Property(property="likes", type="integer", format="integer", example="1")
+    *            @OA\Property(property="telephone", type="integer", format="integer", example="123-546-3345")
     *          )
     *      ),
     *     @OA\Response(
@@ -130,12 +130,13 @@ class ProviderController extends Controller
      *      @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *            required={"name", "logo", "info", "email", "telephone"},
+     *            required={"id","name", "logo", "info", "email", "telephone"},
+     *            @OA\Property(property="id", type="number" example="1"),
      *            @OA\Property(property="name", type="string", format="string", example="Plant inc."),
      *            @OA\Property(property="logo", type="string", format="string", example="https://xyz.com"),
      *            @OA\Property(property="info", type="string", format="string", example="Get wonderful plants"),
      *            @OA\Property(property="email", type="string", format="string", example="abc@gmail.com"),
-     *            @OA\Property(property="likes", type="integer", format="integer", example="1")
+     *            @OA\Property(property="telephone", type="integer", format="integer", example="123-546-3345")
      *          )
      *      ),
      *     @OA\Response(

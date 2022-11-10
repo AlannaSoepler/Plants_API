@@ -31,184 +31,6 @@
           }
         }
       },
-      "put": {
-        "tags": ["Plants"],
-        "summary": "Update a Plant",
-        "description": "Stores the plant in the DB",
-        "operationId": "update_put",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "required": [
-                  "name",
-                  "breed",
-                  "image",
-                  "info",
-                  "season",
-                  "hight",
-                  "likes",
-                  "provider_id"
-                ],
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "hibiscus"
-                  },
-                  "breed": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "malvaceae"
-                  },
-                  "image": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "https://xyz.com"
-                  },
-                  "info": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "the hibiscus is a wonderful plant"
-                  },
-                  "season": {
-                    "type": "string",
-                    "default": "summer",
-                    "enum": ["summer", "fall", "winter", "spring"]
-                  },
-                  "hight": {
-                    "type": "integer",
-                    "format": "integer",
-                    "example": "1"
-                  },
-                  "likes": {
-                    "type": "integer",
-                    "format": "integer",
-                    "example": "1"
-                  },
-                  "provider": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "ThePlant.inc"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": ""
-                    },
-                    "data": {
-                      "type": "object"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": ["Plants"],
-        "summary": "Update a Plant",
-        "description": "Stores the plant in the DB",
-        "operationId": "update_patch",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "required": [
-                  "name",
-                  "breed",
-                  "image",
-                  "info",
-                  "season",
-                  "hight",
-                  "likes",
-                  "provider_id"
-                ],
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "hibiscus"
-                  },
-                  "breed": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "malvaceae"
-                  },
-                  "image": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "https://xyz.com"
-                  },
-                  "info": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "the hibiscus is a wonderful plant"
-                  },
-                  "season": {
-                    "type": "string",
-                    "default": "summer",
-                    "enum": ["summer", "fall", "winter", "spring"]
-                  },
-                  "hight": {
-                    "type": "integer",
-                    "format": "integer",
-                    "example": "1"
-                  },
-                  "likes": {
-                    "type": "integer",
-                    "format": "integer",
-                    "example": "1"
-                  },
-                  "provider": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "ThePlant.inc"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": ""
-                    },
-                    "data": {
-                      "type": "object"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": ["Plants"],
         "summary": "Create a new Plant",
@@ -256,18 +78,17 @@
                     "enum": ["summer", "fall", "winter", "spring"]
                   },
                   "hight": {
-                    "type": "integer",
-                    "format": "integer",
-                    "example": "1"
+                    "type": "float",
+                    "format": "float",
+                    "example": "2.5"
                   },
                   "likes": {
                     "type": "integer",
                     "format": "integer",
-                    "example": "1"
+                    "example": "1592"
                   },
                   "provider_id": {
-                    "type": "integer",
-                    "format": "integer",
+                    "type": "number",
                     "example": "1"
                   }
                 },
@@ -328,6 +149,204 @@
           }
         }
       },
+      "patch": {
+        "tags": ["Plants"],
+        "summary": "Update a Plant",
+        "description": "Stores the plant in the DB",
+        "operationId": "update_patch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Plant id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "name",
+                  "breed",
+                  "image",
+                  "info",
+                  "season",
+                  "hight",
+                  "likes",
+                  "provider_id"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "hibiscus"
+                  },
+                  "breed": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "malvaceae"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "https://xyz.com"
+                  },
+                  "info": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "the hibiscus is a wonderful plant"
+                  },
+                  "season": {
+                    "type": "string",
+                    "default": "summer",
+                    "enum": ["summer", "fall", "winter", "spring"]
+                  },
+                  "hight": {
+                    "type": "float",
+                    "format": "float",
+                    "example": "2.5"
+                  },
+                  "likes": {
+                    "type": "integer",
+                    "format": "integer",
+                    "example": "1592"
+                  },
+                  "provider_id": {
+                    "type": "number",
+                    "example": "1"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": ""
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Plants"],
+        "summary": "Update a Plant",
+        "description": "Stores the plant in the DB",
+        "operationId": "update_put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Plant id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "name",
+                  "breed",
+                  "image",
+                  "info",
+                  "season",
+                  "hight",
+                  "likes",
+                  "provider_id"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "hibiscus"
+                  },
+                  "breed": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "malvaceae"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "https://xyz.com"
+                  },
+                  "info": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "the hibiscus is a wonderful plant"
+                  },
+                  "season": {
+                    "type": "string",
+                    "default": "summer",
+                    "enum": ["summer", "fall", "winter", "spring"]
+                  },
+                  "hight": {
+                    "type": "float",
+                    "format": "float",
+                    "example": "2.5"
+                  },
+                  "likes": {
+                    "type": "integer",
+                    "format": "integer",
+                    "example": "1592"
+                  },
+                  "provider_id": {
+                    "type": "number",
+                    "example": "1"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": ""
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
       "delete": {
         "tags": ["Plants"],
         "summary": "Delete a Plant",
@@ -382,136 +401,6 @@
           },
           "403": {
             "description": "Forbidden"
-          }
-        }
-      },
-      "put": {
-        "tags": ["Providers"],
-        "summary": "Update a Provider",
-        "description": "Stores the provider in the DB",
-        "operationId": "update_put_provider",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "required": ["name", "logo", "info", "email", "telephone"],
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "Plant inc."
-                  },
-                  "logo": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "https://xyz.com"
-                  },
-                  "info": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "Get wonderful plants"
-                  },
-                  "email": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "abc@gmail.com"
-                  },
-                  "likes": {
-                    "type": "integer",
-                    "format": "integer",
-                    "example": "1"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": ""
-                    },
-                    "data": {
-                      "type": "object"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": ["Providers"],
-        "summary": "Update a Provider",
-        "description": "Stores the provider in the DB",
-        "operationId": "update_patch_provider",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "required": ["name", "logo", "info", "email", "telephone"],
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "Plant inc."
-                  },
-                  "logo": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "https://xyz.com"
-                  },
-                  "info": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "Get wonderful plants"
-                  },
-                  "email": {
-                    "type": "string",
-                    "format": "string",
-                    "example": "abc@gmail.com"
-                  },
-                  "likes": {
-                    "type": "integer",
-                    "format": "integer",
-                    "example": "1"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": ""
-                    },
-                    "data": {
-                      "type": "object"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            }
           }
         }
       },
@@ -607,6 +496,158 @@
           },
           "403": {
             "description": "Forbidden"
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Providers"],
+        "summary": "Update a Provider",
+        "description": "Stores the provider in the DB",
+        "operationId": "update_patch_provider",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "provider id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": ["name", "logo", "info", "email", "telephone"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "Plant inc."
+                  },
+                  "logo": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "https://xyz.com"
+                  },
+                  "info": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "Get wonderful plants"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "abc@gmail.com"
+                  },
+                  "telephone": {
+                    "type": "integer",
+                    "format": "integer",
+                    "example": "123-546-3345"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": ""
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Providers"],
+        "summary": "Update a Provider",
+        "description": "Stores the provider in the DB",
+        "operationId": "update_put_provider",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "provider id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": ["name", "logo", "info", "email", "telephone"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "Plant inc."
+                  },
+                  "logo": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "https://xyz.com"
+                  },
+                  "info": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "Get wonderful plants"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "abc@gmail.com"
+                  },
+                  "telephone": {
+                    "type": "integer",
+                    "format": "integer",
+                    "example": "123-546-3345"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": ""
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
           }
         }
       },

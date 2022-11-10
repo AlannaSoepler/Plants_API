@@ -78,7 +78,7 @@ class PlantController extends Controller
     *            @OA\Property(property="season", type="string", enum={"summer", "fall", "winter", "spring"}, default="summer"),
     *            @OA\Property(property="hight", type="integer", format="integer", example="1"),
     *            @OA\Property(property="likes", type="integer", format="integer", example="1"),
-    *            @OA\Property(property="provider_id", type="integer", format="integer", example="1")
+    *            @OA\Property(property="provider_id", type="number", example="1")
     *          )
     *      ),
     *     @OA\Response(
@@ -159,7 +159,8 @@ class PlantController extends Controller
      *      @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *            required={"name", "breed", "image", "info", "season", "hight","likes", "provider_id"},
+     *            required={"id","name", "breed", "image", "info", "season", "hight","likes", "provider_id"},
+     *            @OA\Property(property="id", type="number" example="1"),
      *            @OA\Property(property="name", type="string", format="string", example="hibiscus"),
      *            @OA\Property(property="breed", type="string", format="string", example="malvaceae"),
      *            @OA\Property(property="image", type="string", format="string", example="https://xyz.com"),
