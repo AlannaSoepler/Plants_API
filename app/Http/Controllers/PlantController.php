@@ -149,7 +149,6 @@ class PlantController extends Controller
     {
         return new PlantResource($plant);
     }
-
     /**
      * @OA\Put(
      *      path="/api/plants",
@@ -215,7 +214,7 @@ class PlantController extends Controller
      *         @OA\JsonContent(
      *         @OA\Property(property="status_code", type="integer", example="204"),
      *         @OA\Property(property="data",type="object")
-     *          ),
+     *          )
      *       )
      *    )
      * )

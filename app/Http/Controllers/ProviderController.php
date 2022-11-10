@@ -19,7 +19,7 @@ class ProviderController extends Controller
     *     tags={"Providers"},
     *      @OA\Response(
     *          response=200,
-    *          description="Successful operation, Returns a list of Plants in JSON format"
+    *          description="Successful operation, Returns a list of Providers in JSON format"
     *       ),
     *      @OA\Response(
     *          response=401,
@@ -42,6 +42,32 @@ class ProviderController extends Controller
     }
 
     /**
+    * 
+    * @OA\Post(
+    *      path="/api/providers",
+    *      operationId="create_provider",
+    *      tags={"Providers"},
+    *      summary="Create a Provider",
+    *      description="Stores the provider in the DB",
+    *      @OA\RequestBody(
+    *         required=true,
+    *         @OA\JsonContent(
+    *            required={"name", "logo", "info", "email", "telephone"},
+    *            @OA\Property(property="name", type="string", format="string", example="Plant inc."),
+    *            @OA\Property(property="logo", type="string", format="string", example="https://xyz.com"),
+    *            @OA\Property(property="info", type="string", format="string", example="Get wonderful plants"),
+    *            @OA\Property(property="email", type="string", format="string", example="abc@gmail.com"),
+    *            @OA\Property(property="likes", type="integer", format="integer", example="1")
+    *          )
+    *      ),
+    *     @OA\Response(
+    *          response=200, description="Success",
+    *          @OA\JsonContent(
+    *             @OA\Property(property="status", type="integer", example=""),
+    *             @OA\Property(property="data",type="object")
+    *          )
+    *      )
+    * ) 
     * Store a newly created resource in storage.
     *
     * @param  \Illuminate\Http\StoreProviderRequest  $request
@@ -94,6 +120,33 @@ class ProviderController extends Controller
     }
 
     /**
+     * 
+     * @OA\Put(
+     *      path="/api/providers",
+     *      operationId="update_provider",
+     *      tags={"Providers"},
+     *      summary="Update a Provider",
+     *      description="Stores the provider in the DB",
+     *      @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *            required={"name", "logo", "info", "email", "telephone"},
+     *            @OA\Property(property="name", type="string", format="string", example="Plant inc."),
+     *            @OA\Property(property="logo", type="string", format="string", example="https://xyz.com"),
+     *            @OA\Property(property="info", type="string", format="string", example="Get wonderful plants"),
+     *            @OA\Property(property="email", type="string", format="string", example="abc@gmail.com"),
+     *            @OA\Property(property="likes", type="integer", format="integer", example="1")
+     *          )
+     *      ),
+     *     @OA\Response(
+     *          response=200, description="Success",
+     *          @OA\JsonContent(
+     *             @OA\Property(property="status", type="integer", example=""),
+     *             @OA\Property(property="data",type="object")
+     *          )
+     *      )
+     * )
+     * 
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\UpdateProviderRequest  $request
@@ -109,6 +162,26 @@ class ProviderController extends Controller
     }
 
     /**
+     * @OA\Delete(
+     *    path="/api/providers/{id}",
+     *    operationId="destroy_provider",
+     *    tags={"Providers"},
+     *    summary="Delete a Provider",
+     *    description="Delete Provider",
+     *    @OA\Parameter(name="id", in="path", description="Id of a Provider", required=true,
+     *        @OA\Schema(type="integer")
+     *    ),
+     *    @OA\Response(
+     *         response=204,
+     *         description="Success",
+     *         @OA\JsonContent(
+     *         @OA\Property(property="status_code", type="integer", example="204"),
+     *         @OA\Property(property="data",type="object")
+     *          )
+     *       )
+     *    )
+     * )
+     * 
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Provider  $provider
