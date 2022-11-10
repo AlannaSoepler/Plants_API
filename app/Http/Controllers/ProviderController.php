@@ -39,11 +39,11 @@ class ProviderController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
     public function store(Request $request)
     {
         $provider = Provider::create($request->only([
@@ -53,11 +53,38 @@ class ProviderController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Provider  $provider
-     * @return \Illuminate\Http\Response
-     */
+    * @OA\Get(
+    *     path="/api/providers/{id}",
+    *     summary="Get Providers by ID",
+    *     description="Gets a provider by ID",
+    *     tags={"Providers"},
+    *          @OA\Parameter(
+    *          name="id",
+    *          description="provider id",
+    *          required=true,
+    *          in="path",
+    *          @OA\Schema(
+    *              type="integer")
+    *          ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Successful operation"
+    *       ),
+    *      @OA\Response(
+    *          response=401,
+    *          description="Unauthenticated",
+    *      ),
+    *      @OA\Response(
+    *          response=403,
+    *          description="Forbidden"
+    *      )
+    * )
+    *
+    * Display the specified resource.
+    *
+    * @param  \App\Models\Provider  $provider
+    * @return \Illuminate\Http\Response
+    */
     public function show(Provider $provider)
     {
         return new ProviderResource($provider);
