@@ -32,6 +32,102 @@
                     }
                 }
             },
+            "put": {
+                "tags": [
+                    "Plants"
+                ],
+                "summary": "Update a Plant",
+                "description": "Stores the plant in the DB",
+                "operationId": "update",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "breed",
+                                    "image",
+                                    "info",
+                                    "season",
+                                    "hight",
+                                    "provider",
+                                    "likes"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "hibiscus"
+                                    },
+                                    "breed": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "malvaceae"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "https://xyz.com"
+                                    },
+                                    "info": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "the hibiscus is a wonderful plant"
+                                    },
+                                    "season": {
+                                        "type": "string",
+                                        "default": "summer",
+                                        "enum": [
+                                            "summer",
+                                            "fall",
+                                            "winter",
+                                            "spring"
+                                        ]
+                                    },
+                                    "hight": {
+                                        "type": "integer",
+                                        "format": "integer",
+                                        "example": "1"
+                                    },
+                                    "provider": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "ThePlant.inc"
+                                    },
+                                    "likes": {
+                                        "type": "integer",
+                                        "format": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": ""
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "Plants"

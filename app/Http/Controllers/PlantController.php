@@ -150,6 +150,36 @@ class PlantController extends Controller
     }
 
     /**
+     * * @OA\Put(
+     *      path="/api/plants",
+     *      operationId="update",
+     *      tags={"Plants"},
+     *      summary="Update a Plant",
+     *      description="Stores the plant in the DB",
+     *      @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *            required={"name", "breed", "image", "info", "season", "hight", "provider","likes"},
+     *            @OA\Property(property="name", type="string", format="string", example="hibiscus"),
+     *            @OA\Property(property="breed", type="string", format="string", example="malvaceae"),
+     *            @OA\Property(property="image", type="string", format="string", example="https://xyz.com"),
+     *            @OA\Property(property="info", type="string", format="string", example="the hibiscus is a wonderful plant"),
+     *            @OA\Property(property="season", type="string", enum={"summer", "fall", "winter", "spring"}, default="summer"),
+     *            @OA\Property(property="hight", type="integer", format="integer", example="1"),
+     *            @OA\Property(property="provider", type="string", format="string", example="ThePlant.inc"),
+     *             @OA\Property(property="likes", type="integer", format="integer", example="1")
+     *          )
+     *      ),
+     *     @OA\Response(
+     *          response=200, description="Success",
+     *          @OA\JsonContent(
+     *             @OA\Property(property="status", type="integer", example=""),
+     *             @OA\Property(property="data",type="object")
+     *          )
+     *     )
+     * )
+     *
+     * 
      * Update the specified resource in the plant table.
      * The user sends a put request though the URL. This gets request will display all the plants in the plant table. 
      * Using the route defined in the API.php it calls the update function in the plant controller. 
