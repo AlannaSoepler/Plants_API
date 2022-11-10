@@ -147,8 +147,8 @@
                                     "info",
                                     "season",
                                     "hight",
-                                    "provider",
-                                    "likes"
+                                    "likes",
+                                    "provider_id"
                                 ],
                                 "properties": {
                                     "name": {
@@ -186,10 +186,10 @@
                                         "format": "integer",
                                         "example": "1"
                                     },
-                                    "provider": {
-                                        "type": "string",
-                                        "format": "string",
-                                        "example": "ThePlant.inc"
+                                    "provider_id": {
+                                        "type": "integer",
+                                        "format": "integer",
+                                        "example": "1"
                                     },
                                     "likes": {
                                         "type": "integer",

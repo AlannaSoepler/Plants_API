@@ -50,7 +50,7 @@ class PlantController extends Controller
     */
     public function index()
     {
-        return new PlantCollection(Plant::all());
+        return new PlantCollection(Plant::with('provider')->get(['id','name']));
     }
 
     /**
@@ -69,15 +69,15 @@ class PlantController extends Controller
     *      @OA\RequestBody(
     *         required=true,
     *         @OA\JsonContent(
-    *            required={"name", "breed", "image", "info", "season", "hight", "provider","likes"},
+    *            required={"name", "breed", "image", "info", "season", "hight","likes","provider_id"},
     *            @OA\Property(property="name", type="string", format="string", example="hibiscus"),
     *            @OA\Property(property="breed", type="string", format="string", example="malvaceae"),
     *            @OA\Property(property="image", type="string", format="string", example="https://xyz.com"),
     *            @OA\Property(property="info", type="string", format="string", example="the hibiscus is a wonderful plant"),
     *            @OA\Property(property="season", type="string", enum={"summer", "fall", "winter", "spring"}, default="summer"),
     *            @OA\Property(property="hight", type="integer", format="integer", example="1"),
-    *            @OA\Property(property="provider", type="string", format="string", example="ThePlant.inc"),
-    *             @OA\Property(property="likes", type="integer", format="integer", example="1")
+    *            @OA\Property(property="likes", type="integer", format="integer", example="1"),
+    *            @OA\Property(property="provider_id", type="integer", format="integer", example="1")
     *          )
     *      ),
     *     @OA\Response(
@@ -101,7 +101,7 @@ class PlantController extends Controller
     public function store(Request $request)
     {
         $plant = Plant::create($request->only([
-            'name', 'breed', 'image', 'info', 'season', 'hight', 'provider', 'likes'
+            'name', 'breed', 'image', 'info', 'season', 'hight', 'likes', 'provider_id'
         ]));
         return new PlantResource($plant);
     }
@@ -158,15 +158,15 @@ class PlantController extends Controller
      *      @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *            required={"name", "breed", "image", "info", "season", "hight", "provider","likes"},
+     *            required={"name", "breed", "image", "info", "season", "hight","likes", "provider_id"},
      *            @OA\Property(property="name", type="string", format="string", example="hibiscus"),
      *            @OA\Property(property="breed", type="string", format="string", example="malvaceae"),
      *            @OA\Property(property="image", type="string", format="string", example="https://xyz.com"),
      *            @OA\Property(property="info", type="string", format="string", example="the hibiscus is a wonderful plant"),
      *            @OA\Property(property="season", type="string", enum={"summer", "fall", "winter", "spring"}, default="summer"),
      *            @OA\Property(property="hight", type="integer", format="integer", example="1"),
+     *            @OA\Property(property="likes", type="integer", format="integer", example="1"),
      *            @OA\Property(property="provider", type="string", format="string", example="ThePlant.inc"),
-     *             @OA\Property(property="likes", type="integer", format="integer", example="1")
      *          )
      *      ),
      *     @OA\Response(
@@ -191,7 +191,7 @@ class PlantController extends Controller
     public function update(Request $request, Plant $plant)
     {
         $plant->update($request->only([
-            'name', 'breed', 'image', 'info', 'season', 'hight', 'provider', 'likes'
+            'name', 'breed', 'image', 'info', 'season', 'hight', 'likes', 'provider_id'
         ]));
 
         return new PlantResource($plant);
