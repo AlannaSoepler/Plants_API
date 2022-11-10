@@ -51,7 +51,7 @@ class PlantController extends Controller
     */
     public function index()
     {
-        return new PlantCollection(Plant::with('provider')->get(['id','name']));
+        return new PlantCollection(Plant::with('provider')->get());
     }
 
     /**

@@ -16,7 +16,7 @@ class PlantResource extends JsonResource
     public function toArray($request)
     {
         return [
-            // 'id' => $this->id,
+            'id' => $this->id,
             'name' => $this->name,
             'breed' => $this->breed,
             'image' => $this->image,
@@ -25,7 +25,7 @@ class PlantResource extends JsonResource
             'hight' => $this->hight,
             'likes' => $this->likes,
             'provider_id' => $this->provider->id,
-            'provider_name' => $this->provider->name,
+            'provider_name' => $this->provider->name
         ];
     }
 }
