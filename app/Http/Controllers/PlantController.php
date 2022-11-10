@@ -22,6 +22,7 @@ class PlantController extends Controller
    /** 
     * @OA\Get(
     *     path="/api/plants",
+    *     summary="Get all Plants",
     *     description="Displays all the plants",
     *     tags={"Plants"},
     *      @OA\Response(
@@ -109,6 +110,7 @@ class PlantController extends Controller
     /**
     * @OA\Get(
     *     path="/api/plants/{id}",
+    *     summary="Get Plant by ID",
     *     description="Gets a plant by ID",
     *     tags={"Plants"},
     *          @OA\Parameter(

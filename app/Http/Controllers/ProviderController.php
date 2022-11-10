@@ -12,6 +12,7 @@ class ProviderController extends Controller
    /**
     * @OA\Get(
     *     path="/api/providers",
+    *     summary="Get all Providers",
     *     description="Displays all the plants",
     *     tags={"Providers"},
     *      @OA\Response(
