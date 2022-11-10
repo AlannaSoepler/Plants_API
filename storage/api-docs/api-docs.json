@@ -301,7 +301,6 @@
                 "tags": [
                     "Providers"
                 ],
-                "summary": "Display a listing of the resource.",
                 "description": "Displays all the plants",
                 "operationId": "386f3ddc2b7b26effa6a559287ccbe4c",
                 "responses": {
