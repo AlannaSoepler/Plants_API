@@ -6,6 +6,7 @@ use App\Models\Provider;
 use Illuminate\Http\Request;
 use App\Http\Resources\ProviderResource;
 use App\Http\Resources\ProviderCollection;
+use App\Http\Requests\StoreProviderRequest;
 
 class ProviderController extends Controller
 {
@@ -42,10 +43,10 @@ class ProviderController extends Controller
     /**
     * Store a newly created resource in storage.
     *
-    * @param  \Illuminate\Http\Request  $request
+    * @param  \Illuminate\Http\StoreProviderRequest  $request
     * @return \Illuminate\Http\Response
     */
-    public function store(Request $request)
+    public function store(StoreProviderRequest $request)
     {
         $provider = Provider::create($request->only([
             'name', 'logo', 'info', 'email', 'telephone'
