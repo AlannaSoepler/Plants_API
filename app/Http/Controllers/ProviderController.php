@@ -35,7 +35,8 @@ class ProviderController extends Controller
     */
     public function index()
     {
-        return new ProviderCollection(Provider::all());
+        // return new ProviderCollection(Provider::all());
+        return new ProviderCollection(Provider::paginate(1));
     }
 
     /**
