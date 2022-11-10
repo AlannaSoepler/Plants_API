@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\ProviderResource;
 use App\Http\Resources\ProviderCollection;
 use App\Http\Requests\StoreProviderRequest;
+use App\Http\Requests\UpdateProviderRequest;
 
 class ProviderController extends Controller
 {
@@ -95,11 +96,11 @@ class ProviderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UpdateProviderRequest  $request
      * @param  \App\Models\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Provider $provider)
+    public function update(UpdateProviderRequest $request, Provider $provider)
     {
         $provider->update($request->only([
             'name', 'logo', 'info', 'email', 'telephone'
