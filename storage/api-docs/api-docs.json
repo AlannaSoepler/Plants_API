@@ -117,7 +117,8 @@
               }
             }
           }
-        }
+        },
+        "security": [{ "bearerAuth": [] }]
       }
     },
     "/api/plants/{id}": {
@@ -246,7 +247,8 @@
               }
             }
           }
-        }
+        },
+        "security": [{ "bearerAuth": [] }]
       },
       "put": {
         "tags": ["Plants"],
@@ -345,7 +347,8 @@
               }
             }
           }
-        }
+        },
+        "security": [{ "bearerAuth": [] }]
       },
       "delete": {
         "tags": ["Plants"],
@@ -383,7 +386,8 @@
               }
             }
           }
-        }
+        },
+        "security": [{ "bearerAuth": [] }]
       }
     },
     "/api/providers": {
@@ -467,7 +471,8 @@
               }
             }
           }
-        }
+        },
+        "security": [{ "bearerAuth": [] }]
       }
     },
     "/api/providers/{id}": {
@@ -573,7 +578,8 @@
               }
             }
           }
-        }
+        },
+        "security": [{ "bearerAuth": [] }]
       },
       "put": {
         "tags": ["Providers"],
@@ -649,45 +655,19 @@
               }
             }
           }
-        }
-      },
-      "delete": {
-        "tags": ["Providers"],
-        "summary": "Delete a Provider",
-        "description": "Delete Provider",
-        "operationId": "destroy_provider",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Id of a Provider",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "status_code": {
-                      "type": "integer",
-                      "example": "204"
-                    },
-                    "data": {
-                      "type": "object"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            }
-          }
-        }
+        },
+        "security": [{ "bearerAuth": [] }]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "name": "bearerAuth",
+        "in": "header",
+        "bearerFormat": "JWT",
+        "scheme": "bearer"
       }
     }
   }

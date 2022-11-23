@@ -67,6 +67,7 @@ class PlantController extends Controller
     *      tags={"Plants"},
     *      summary="Create a new Plant",
     *      description="Stores the plant in the DB",
+    *      security={{"bearerAuth":{}}},
     *      @OA\RequestBody(
     *         required=true,
     *         @OA\JsonContent(
@@ -150,13 +151,14 @@ class PlantController extends Controller
         return new PlantResource($plant);
     }
     /**
-     * @OA\Put(
-     *      path="/api/plants",
-     *      operationId="update",
-     *      tags={"Plants"},
-     *      summary="Update a Plant",
-     *      description="Stores the plant in the DB",
-     *         @OA\Parameter(
+    * @OA\Put(
+    *      path="/api/plants",
+    *      operationId="update",
+    *      tags={"Plants"},
+    *      summary="Update a Plant",
+    *      description="Stores the plant in the DB",
+    *      security={{"bearerAuth":{}}},
+    *         @OA\Parameter(
     *          name="id",
     *          description="Plant id",
     *          required=true,
@@ -164,40 +166,40 @@ class PlantController extends Controller
     *          @OA\Schema(
     *          type="integer")
     *          ),
-     *      @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(
-     *            required={"id","name", "breed", "image", "info", "season", "hight","likes", "provider_id"},
-     *            @OA\Property(property="id", type="number" example="1"),
-     *            @OA\Property(property="name", type="string", format="string", example="hibiscus"),
-     *            @OA\Property(property="breed", type="string", format="string", example="malvaceae"),
-     *            @OA\Property(property="image", type="string", format="string", example="https://xyz.com"),
-     *            @OA\Property(property="info", type="string", format="string", example="the hibiscus is a wonderful plant"),
-     *            @OA\Property(property="season", type="string", enum={"summer", "fall", "winter", "spring"}, default="summer"),
-     *            @OA\Property(property="hight", type="integer", format="integer", example="1"),
-     *            @OA\Property(property="likes", type="integer", format="integer", example="1"),
-     *            @OA\Property(property="provider", type="string", format="string", example="ThePlant.inc"),
-     *          )
-     *      ),
-     *     @OA\Response(
-     *          response=200, description="Success",
-     *          @OA\JsonContent(
-     *             @OA\Property(property="status", type="integer", example=""),
-     *             @OA\Property(property="data",type="object")
-     *          )
-     *      )
-     * )
-     * 
-     * Update the specified resource in the plant table.
-     * The user sends a put request though the URL. This gets request will display all the plants in the plant table. 
-     * Using the route defined in the API.php it calls the update function in the plant controller. 
-     * From here it takes all the data that was given by the user and stores it in the $plant variable and 
-     * then sends the data in the variable to the plant collection. However, using the put request will completely delete and recreate.   
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Plant  $plant
-     * @return \Illuminate\Http\Response
-     */
+    *      @OA\RequestBody(
+    *         required=true,
+    *         @OA\JsonContent(
+    *            required={"id","name", "breed", "image", "info", "season", "hight","likes", "provider_id"},
+    *            @OA\Property(property="id", type="number" example="1"),
+    *            @OA\Property(property="name", type="string", format="string", example="hibiscus"),
+    *            @OA\Property(property="breed", type="string", format="string", example="malvaceae"),
+    *            @OA\Property(property="image", type="string", format="string", example="https://xyz.com"),
+    *            @OA\Property(property="info", type="string", format="string", example="the hibiscus is a wonderful plant"),
+    *            @OA\Property(property="season", type="string", enum={"summer", "fall", "winter", "spring"}, default="summer"),
+    *            @OA\Property(property="hight", type="integer", format="integer", example="1"),
+    *            @OA\Property(property="likes", type="integer", format="integer", example="1"),
+    *            @OA\Property(property="provider", type="string", format="string", example="ThePlant.inc"),
+    *          )
+    *      ),
+    *     @OA\Response(
+    *          response=200, description="Success",
+    *          @OA\JsonContent(
+    *             @OA\Property(property="status", type="integer", example=""),
+    *             @OA\Property(property="data",type="object")
+    *          )
+    *      )
+    * )
+    * 
+    * Update the specified resource in the plant table.
+    * The user sends a put request though the URL. This gets request will display all the plants in the plant table. 
+    * Using the route defined in the API.php it calls the update function in the plant controller. 
+    * From here it takes all the data that was given by the user and stores it in the $plant variable and 
+    * then sends the data in the variable to the plant collection. However, using the put request will completely delete and recreate.   
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  \App\Models\Plant  $plant
+    * @return \Illuminate\Http\Response
+    */
     public function update(Request $request, Plant $plant)
     {
         $plant->update($request->only([
@@ -214,6 +216,7 @@ class PlantController extends Controller
      *    tags={"Plants"},
      *    summary="Delete a Plant",
      *    description="Delete Plant",
+     *    security={{"bearerAuth":{}}},
      *    @OA\Parameter(name="id", in="path", description="Id of a Plant", required=true,
      *        @OA\Schema(type="integer")
      *    ),
