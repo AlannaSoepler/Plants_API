@@ -17,7 +17,9 @@ class ShopFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->name(),
+            'address' => fake()->address(),
+            'info' => fake()->paragraph($nbSentences = 5, $variableNbSentences = true)
         ];
     }
 }

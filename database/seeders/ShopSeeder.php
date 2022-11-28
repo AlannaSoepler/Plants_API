@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Plant;
+use App\Models\Shop;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ShopSeeder extends Seeder
 {
@@ -14,6 +16,14 @@ class ShopSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Shop::factory()
+        ->times(3)
+        ->create();
+
+        foreach(Shop::all() as $shop)
+        {
+            $plants = Plant::inRandomOrder()->take(rand(1,3))->pluck('id');
+            $shop->plants()->attach($plants);
+        }
     }
 }
