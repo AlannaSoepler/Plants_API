@@ -51,7 +51,7 @@ class PlantController extends Controller
     */
     public function index()
     {
-        return new PlantCollection(Plant::with('provider')->get());
+        return new PlantCollection(Plant::with('provider')->with('shops')->get());
     }
 
     /**
@@ -105,6 +105,8 @@ class PlantController extends Controller
         $plant = Plant::create($request->only([
             'name', 'breed', 'image', 'info', 'season', 'hight', 'likes', 'provider_id'
         ]));
+
+        $plant->shops()->attach($request->shops);
         return new PlantResource($plant);
     }
 
@@ -205,7 +207,8 @@ class PlantController extends Controller
         $plant->update($request->only([
             'name', 'breed', 'image', 'info', 'season', 'hight', 'likes', 'provider_id'
         ]));
-
+        
+        // $plant->shops()->attach($request->plant);
         return new PlantResource($plant);
     }
 
@@ -238,6 +241,7 @@ class PlantController extends Controller
      */
     public function destroy(Plant $plant)
     {
+        $plant->shops()->detach();
         $plant->delete();
         // return response()->json(null, response::HTTP_NO_CONTENT);
         //returns a http response of 204 (no content), if there is no content to display

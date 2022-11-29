@@ -16,6 +16,10 @@ class PlantResource extends JsonResource
      */
     public function toArray($request)
     {
+        $shops = array();
+        foreach ($this->shops as $shop){
+           array_push($shops, $shop->name);
+        }
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -25,8 +29,10 @@ class PlantResource extends JsonResource
             'season' => $this->season,
             'hight' => $this->hight,
             'likes' => $this->likes,
+            'provider_id' => $this->provider->id,
             'provider_name' => $this->provider->name,
-            'providers' => ProviderResource::make($this->whenLoaded('provider'),'name')
+            // 'shops' => Resource::make($this->whenLoaded('provider'))
+            'shops'=> $shops
         ];
     }
 }

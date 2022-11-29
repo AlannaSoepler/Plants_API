@@ -26,7 +26,7 @@ class Plant extends Model
     public function provider(){
         return $this->belongsTo(Provider::class);
     }
-    public function shop(){
+    public function shops(){
         return $this->belongsToMany(Shop::class)->withTimestamps();
     }
 }
