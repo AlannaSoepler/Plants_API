@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Plant;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Shop extends Model
 {
     use HasFactory;
 
-    public function plant(){
+    //is being called in the shop seeder. 
+    public function plants(){
         return $this->belongsToMany(Plant::class)->withTimestamps();
     }
 }

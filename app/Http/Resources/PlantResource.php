@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Resources;
+use App\Http\Resources\ProviderResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PlantResource extends JsonResource
@@ -24,8 +25,8 @@ class PlantResource extends JsonResource
             'season' => $this->season,
             'hight' => $this->hight,
             'likes' => $this->likes,
-            'provider_id' => $this->provider->id,
-            'provider_name' => $this->provider->name
+            'provider_name' => $this->provider->name,
+            'providers' => ProviderResource::make($this->whenLoaded('provider'),'name')
         ];
     }
 }
