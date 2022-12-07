@@ -29,4 +29,7 @@ class Plant extends Model
     public function shops(){
         return $this->belongsToMany(Shop::class)->withTimestamps();
     }
+    public function plantShop(){
+        return $this->belongsTo(PlantShop::class);
+    }
 }

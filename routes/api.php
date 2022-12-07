@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PlantController;
 use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\PlantShopController;
 
 /*
  Here is where one can register API routes for the application. These
@@ -31,6 +32,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::get('/plants', [PlantController::class, 'index']);
 Route::get('/plants/{plant}', [PlantController::class, 'show']);
+
+Route::get('/plantShop', [PlantShopController::class, 'index']);
+Route::get('/plantShop/{plantShop}', [PlantShopController::class, 'show']);
+
+Route::get('/plantShop', [PlantShopController::class, 'index']);
+Route::get('/plantShop/{plantShop}', [PlantShopController::class, 'show']);
+Route::get('/plantShop', [PlantShopController::class, 'store']);
+Route::get('/plantShop/{plantShop}', [PlantShopController::class, 'update']);
+Route::get('/plantShop/{plantShop}', [PlantShopController::class, 'destroy']);
 
 Route::get('/providers', [ProviderController::class, 'index']);
 Route::get('/providers/{provider}', [ProviderController::class, 'show']);

@@ -14,4 +14,8 @@ class Shop extends Model
     public function plants(){
         return $this->belongsToMany(Plant::class)->withTimestamps();
     }
+
+    public function plantShop(){
+        return $this->belongsTo(PlantShop::class)->withTimestamps();
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePlantRequest;
 use App\Http\Resources\PlantCollection;
 use App\Http\Resources\PlantResource;
 use App\Models\Plant;
@@ -100,7 +101,7 @@ class PlantController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function store(Request $request)
+    public function store(StorePlantRequest $request)
     {
         $plant = Plant::create($request->only([
             'name', 'breed', 'image', 'info', 'season', 'hight', 'likes', 'provider_id'
@@ -208,7 +209,7 @@ class PlantController extends Controller
             'name', 'breed', 'image', 'info', 'season', 'hight', 'likes', 'provider_id'
         ]));
         
-        // $plant->shops()->attach($request->plant);
+        //$plant->shops()->attach($request->plant);
         return new PlantResource($plant);
     }
 
