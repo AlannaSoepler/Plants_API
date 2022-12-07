@@ -52,7 +52,7 @@ class PlantShopController extends Controller
     * @param  \App\Models\PlantShop  $plantShop
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, $plantShop)
+    public function update(Request $request,PlantShop $plantShop)
     {
         $plantShop->update($request->only([
             'plant_id', 'shop_id'

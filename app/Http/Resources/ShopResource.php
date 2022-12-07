@@ -3,10 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\PlantResource;
-//use App\Http\Resources\ProviderResource;
 
-class PlantShopResource extends JsonResource
+class ShopResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,9 +15,9 @@ class PlantShopResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'plant_id' => $this->plant_id,
-            'shop_id' => $this->shop_id
+            'name' => $this->name,
+            'address' => $this->address,
+            'info' => $this->info
         ];
     }
 }

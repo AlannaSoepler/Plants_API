@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Shop extends Model
 {
     use HasFactory;
+    protected $guarded = [''];
 
     //is being called in the shop seeder. 
     public function plants(){

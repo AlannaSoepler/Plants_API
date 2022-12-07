@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PlantShop extends Model
 {
     protected $table = 'plant_shop';
+    protected $guarded = [''];
     
     use HasFactory;
     public function plants(){

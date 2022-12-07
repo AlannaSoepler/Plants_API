@@ -31,7 +31,7 @@ class PlantResource extends JsonResource
             'likes' => $this->likes,
             'provider_id' => $this->provider->id,
             'provider_name' => $this->provider->name,
-            // 'shops' => Resource::make($this->whenLoaded('provider'))
+            // 'shops' => Resource::make($this->whenLoaded('shops'))
             'shops'=> $shops
         ];
     }
