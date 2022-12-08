@@ -12,25 +12,6 @@ use App\Http\Requests\UpdateProviderRequest;
 class ProviderController extends Controller
 {
    /**
-    * @OA\Get(
-    *     path="/api/providers",
-    *     summary="Get all Providers",
-    *     description="Displays all the providers",
-    *     tags={"Providers"},
-    *      @OA\Response(
-    *          response=200,
-    *          description="Successful operation, Returns a list of Providers in JSON format"
-    *       ),
-    *      @OA\Response(
-    *          response=401,
-    *          description="Unauthenticated",
-    *      ),
-    *      @OA\Response(
-    *          response=403,
-    *          description="Forbidden"
-    *      )
-    * )
-    *
     * Display a listing of the resource.
     *
     * @return \Illuminate\Http\Response

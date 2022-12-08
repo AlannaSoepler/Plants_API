@@ -14,30 +14,30 @@
   },
   "paths": {
     "/api/auth": {
-    "get": {
-      "tags": ["Users"],
-      "summary": "Try the api with this lovely user!",
-      "description": "Displays the tester user",
-      "operationId": "GetUsers",
-      "responses": {
-        "200": {
-          "description": "Successful operation, Returns a list of Plants in JSON format"
-        },
-        "401": {
-          "description": "Unauthenticated"
-        },
-        "403": {
-          "description": "Forbidden"
+      "get": {
+        "tags": ["Users"],
+        "summary": "Try the api with this lovely user!",
+        "description": "Displays the tester user",
+        "operationId": "get_users",
+        "responses": {
+          "200": {
+            "description": "Successful operation, Returns a list of Plants in JSON format"
+          },
+          "401": {
+            "description": "Unauthenticated"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
         }
       }
-    }
-  },
+    },
     "/api/plants": {
       "get": {
         "tags": ["Plants"],
         "summary": "Get all Plants",
         "description": "Displays all the plants",
-        "operationId": "6e2a3a91967b1e364c87b755cd5152f6",
+        "operationId": "get_plants",
         "responses": {
           "200": {
             "description": "Successful operation, Returns a list of Plants in JSON format"
@@ -54,7 +54,7 @@
         "tags": ["Plants"],
         "summary": "Create a new Plant",
         "description": "Stores the plant in the DB",
-        "operationId": "store",
+        "operationId": "store_plant",
         "requestBody": {
           "required": true,
           "content": {
@@ -150,7 +150,7 @@
         "tags": ["Plants"],
         "summary": "Get Plant by ID",
         "description": "Gets a plant by ID",
-        "operationId": "5f7b2efcf3ae43a0485b376c550bcdbd",
+        "operationId": "get_plant_id",
         "parameters": [
           {
             "name": "id",
@@ -178,7 +178,7 @@
         "tags": ["Plants"],
         "summary": "Update a Plant",
         "description": "Stores the plant in the DB",
-        "operationId": "update_patch",
+        "operationId": "update_patch_plant",
         "parameters": [
           {
             "name": "id",
@@ -278,7 +278,7 @@
         "tags": ["Plants"],
         "summary": "Update a Plant",
         "description": "Stores the plant in the DB",
-        "operationId": "update_put",
+        "operationId": "update_put_plant",
         "parameters": [
           {
             "name": "id",
@@ -378,7 +378,7 @@
         "tags": ["Plants"],
         "summary": "Delete a Plant",
         "description": "Delete Plant",
-        "operationId": "destroy",
+        "operationId": "destroy_plant",
         "parameters": [
           {
             "name": "id",
@@ -419,7 +419,7 @@
         "tags": ["Providers"],
         "summary": "Get all Providers",
         "description": "Displays all the plants",
-        "operationId": "386f3ddc2b7b26effa6a559287ccbe4c",
+        "operationId": "get_providers",
         "responses": {
           "200": {
             "description": "Successful operation, Returns a list of Providers in JSON format"
@@ -504,7 +504,7 @@
         "tags": ["Providers"],
         "summary": "Get Providers by ID",
         "description": "Gets a provider by ID",
-        "operationId": "35b1e0194318551d5d5794e6f71ff577",
+        "operationId": "get_provider_id",
         "parameters": [
           {
             "name": "id",
@@ -682,12 +682,13 @@
         },
         "security": [{ "bearerAuth": [] }]
       }
-    },"/api/shops": {
+    },
+    "/api/shops": {
       "get": {
         "tags": ["Shops"],
         "summary": "Get all Shops",
         "description": "Displays all the shops",
-        "operationId": "GetAllShops",
+        "operationId": "get_shops",
         "responses": {
           "200": {
             "description": "Successful operation, Returns a list of Plants in JSON format"
@@ -699,21 +700,18 @@
             "description": "Forbidden"
           }
         }
-      },"post": {
+      },
+      "post": {
         "tags": ["Shops"],
         "summary": "Create a new Shop",
         "description": "Stores the new shop in the DB",
-        "operationId": "StoreShop",
+        "operationId": "store_shop",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "required": [
-                  "name",
-                  "address",
-                  "info"
-                ],
+                "required": ["name", "address", "info"],
                 "properties": {
                   "name": {
                     "type": "string",
@@ -770,7 +768,7 @@
         "tags": ["Shops"],
         "summary": "Get Shop by ID",
         "description": "Gets a shop by ID",
-        "operationId": "GetShopID",
+        "operationId": "get_shop_id",
         "parameters": [
           {
             "name": "id",
@@ -865,7 +863,7 @@
         "tags": ["Shops"],
         "summary": "Update a Shop",
         "description": "Stores the shop in the DB",
-        "operationId": "update_put_Shop",
+        "operationId": "update_put_shop",
         "parameters": [
           {
             "name": "id",
@@ -882,11 +880,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "required": [
-                  "name",
-                  "address",
-                  "info"
-                ],
+                "required": ["name", "address", "info"],
                 "properties": {
                   "name": {
                     "type": "string",
@@ -937,6 +931,263 @@
         "summary": "Delete a Shop",
         "description": "Delete Shop",
         "operationId": "destroy_shop",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Shop Id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status_code": {
+                      "type": "integer",
+                      "example": "204"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "bearerAuth": [] }]
+      }
+    },
+    "/api/plantShop": {
+      "get": {
+        "tags": ["PlantShop"],
+        "summary": "All connection between plants and shops",
+        "description": "Displays the info in pivot table",
+        "operationId": "get_plantShops",
+        "responses": {
+          "200": {
+            "description": "Successful operation, Returns a list of Plants in JSON format"
+          },
+          "401": {
+            "description": "Unauthenticated"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      },
+      "post": {
+        "tags": ["PlantShop"],
+        "summary": "Create a new connection between plants and shops",
+        "description": "Stores the new connection in the DB",
+        "operationId": "store_plantShop",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": ["plant_id", "shop_id"],
+                "properties": {
+                  "plant_id": {
+                    "type": "number",
+                    "example": "1"
+                  },
+                  "shop_id": {
+                    "type": "number",
+                    "example": "1"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": ""
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "bearerAuth": [] }]
+      }
+    },
+    "/api/plantShop/{id}": {
+      "get": {
+        "tags": ["PlantShop"],
+        "summary": "Get PlantShop by ID",
+        "description": "Gets the id from pivot table by ID",
+        "operationId": "get_plantShop_id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Shop id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "401": {
+            "description": "Unauthenticated"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      },
+      "patch": {
+        "tags": ["PlantShop"],
+        "summary": "Update a connection between plants and shops",
+        "description": "Stores the new plant and shop connection in the DB",
+        "operationId": "update_patch_plantShop",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "shop id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": ["plant_id", "shop_id"],
+                "properties": {
+                  "plant_id": {
+                    "type": "number",
+                    "example": "1"
+                  },
+                  "shop_id": {
+                    "type": "number",
+                    "example": "1"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": ""
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "bearerAuth": [] }]
+      },
+      "put": {
+        "tags": ["PlantShop"],
+        "summary": "Update a connection between plants and shops",
+        "description": "Stores the new plant and shop connection in the DB",
+        "operationId": "update_put_plantShop",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "shop id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": ["plant_id", "shop_id"],
+                "properties": {
+                  "plant_id": {
+                    "type": "number",
+                    "example": "1"
+                  },
+                  "shop_id": {
+                    "type": "number",
+                    "example": "1"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": ""
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "bearerAuth": [] }]
+      },
+      "delete": {
+        "tags": ["PlantShop"],
+        "summary": "Delete a connection",
+        "description": "Delete a connection",
+        "operationId": "destroy_plantShop",
         "parameters": [
           {
             "name": "id",
