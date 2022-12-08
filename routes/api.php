@@ -29,31 +29,22 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::apiResource('/plants', PlantController::class)->except((['index', 'show']));
     Route::apiResource('/providers', ProviderController::class)->except((['index', 'show']));
-    // Route::apiResource('/plantShop', PlantShopController::class)->except((['index', 'show']));
+    Route::apiResource('/shops', PlantController::class)->except((['index', 'show']));
+    Route::apiResource('/plantShop', ProviderController::class)->except((['index', 'show']));
 });
-
-Route::get('/plants', [PlantController::class, 'index']);
-Route::get('/plants/{plant}', [PlantController::class, 'show']);
-
-
-
-
-Route::get('/shops', [ShopController::class, 'index']);
-Route::get('/shops/{shop}', [ShopController::class, 'show']);
-Route::post('/shops', [ShopController::class, 'store']);
-Route::put('/shops/{shop}', [ShopController::class, 'update']);
-Route::patch('/shops/{shop}', [ShopController::class, 'update']);
-Route::delete('/shops/{shop}', [ShopController::class, 'destroy']);
 
 //Should be deleted (or create a role and only some people can see it) after evaluation only added to remember login info.
 Route::get('/auth', [AuthController::class, 'index']);
 
+//These routes are exempt from validation. 
+Route::get('/plants', [PlantController::class, 'index']);
+Route::get('/plants/{plant}', [PlantController::class, 'show']);
+
+Route::get('/shops', [ShopController::class, 'index']);
+Route::get('/shops/{shop}', [ShopController::class, 'show']);
+
 Route::get('/plantShop', [PlantShopController::class, 'index']);
 Route::get('/plantShop/{plantShop}', [PlantShopController::class, 'show']);
-Route::post('/plantShop', [PlantShopController::class, 'store']);
-Route::put('/plantShop/{plantShop}', [PlantShopController::class, 'update']);
-Route::patch('/plantShop/{plantShop}', [PlantShopController::class, 'update']);
-Route::delete('/plantShop/{plantShop}', [PlantShopController::class, 'destroy']);
 
 Route::get('/providers', [ProviderController::class, 'index']);
 Route::get('/providers/{provider}', [ProviderController::class, 'show']);
