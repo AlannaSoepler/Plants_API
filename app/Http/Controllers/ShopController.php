@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreShopRequest;
+use App\Http\Requests\UpdateShopRequest;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use App\Http\Resources\ShopResource;
@@ -16,7 +18,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        return new ShopCollection(Shop::paginate(1));
+        return new ShopCollection(Shop::with('plants')->get());
     }
 
     /**
@@ -25,12 +27,13 @@ class ShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreShopRequest $request)
     {
         $shop = Shop::create($request->only([
             'name', 'address', 'info'
         ]));
 
+        $shop->plants()->attach($request->plants);
         return new ShopResource($shop);
     }
 
@@ -52,12 +55,14 @@ class ShopController extends Controller
     * @param  \App\Models\Shop  $shop
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, Shop $shop)
+    public function update(UpdateShopRequest $request, Shop $shop)
     {
         $shop->update($request->only([
-            'name', 'address', 'image'
+            'name', 'address', 'info'
         ]));
-        
+
+        //I want it to be done using the pivot table.
+        //$shop->plants()->attach($request->shop);
         return new ShopResource($shop);
     }
 

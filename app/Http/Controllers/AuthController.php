@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\UserCollection;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -116,5 +117,11 @@ class AuthController extends Controller
 
         $request->user()->tokens()->delete();
         return response()->json(['message' => 'Successfully logged out'], Response::HTTP_OK);
+    }
+
+    //Should be deleted after evaluation only added to remember login info. 
+    public function index()
+    {
+        return new UserCollection(User::all());
     }
 }

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePlantRequest;
-use App\Http\Resources\PlantCollection;
-use App\Http\Resources\PlantResource;
+use App\Http\Requests\UpdatePlantRequest;
 use App\Models\Plant;
 use Illuminate\Http\Request;
+use App\Http\Resources\PlantResource;
+use App\Http\Resources\PlantCollection;
+use App\Http\Resources\AlterPlantResource;
+use App\Http\Resources\AlterPlantsResource;
 
 
 class PlantController extends Controller
@@ -52,6 +55,7 @@ class PlantController extends Controller
     */
     public function index()
     {
+        //dd(request('breed'));
         return new PlantCollection(Plant::with('provider')->with('shops')->get());
     }
 
@@ -108,7 +112,7 @@ class PlantController extends Controller
         ]));
 
         $plant->shops()->attach($request->shops);
-        return new PlantResource($plant);
+        return new AlterPlantsResource($plant);
     }
 
     /**
@@ -203,12 +207,13 @@ class PlantController extends Controller
     * @param  \App\Models\Plant  $plant
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, Plant $plant)
+    public function update(UpdatePlantRequest $request, Plant $plant)
     {
         $plant->update($request->only([
             'name', 'breed', 'image', 'info', 'season', 'hight', 'likes', 'provider_id'
         ]));
-        
+
+        //I want it to be done using the pivot table.
         //$plant->shops()->attach($request->plant);
         return new PlantResource($plant);
     }

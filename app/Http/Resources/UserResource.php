@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ShopResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,15 +14,11 @@ class ShopResource extends JsonResource
      */
     public function toArray($request)
     {
-        $plants = array();
-        foreach ($this->plants as $plant){
-           array_push($plants, $plant->name);
-        }
+        //The first user is open for everyone to see. So that you can test the api
         return [
-            'name' => $this->name,
-            'address' => $this->address,
-            'info' => $this->info,
-            'plants' => $plants
+            'name' => $this->when($this->id == 1, $this->name),
+            'email' => $this->when($this->id == 1, $this->email),
+            'password' => $this->when($this->id == 1, $this->password)
         ];
     }
 }

@@ -1,24 +1,23 @@
 <?php
 
 namespace App\Http\Resources;
+
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PlantResource extends JsonResource
+class AlterPlantsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
-     * This resource is used to structure the JSON data that will be returned to the user when they send a request to the API
-     * I can exclude information which the users will not able to see. Like: id, when it was created and updated. 
-     * 
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
     {
-        // $shops = array();
-        // foreach ($this->shops as $shop){
-        //    array_push($shops, $shop->name);
-        // }
+        $shops = array();
+        foreach ($this->shops as $shop){
+           array_push($shops, $shop->name);
+        }
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -29,10 +28,9 @@ class PlantResource extends JsonResource
             'hight' => $this->hight,
             'likes' => $this->likes,
             'provider_id' => $this->provider->id,
-            'provider_name' => $this->provider->name,
             //when loading plant resource. Take the JSON structure from the shop resource and display as well. 
-            'shops_all' => AlterShopResource::collection($this->whenLoaded('shops')),
-            //'shops'=> $shops
+            //'shops_all' => AlterShopResource::collection($this->whenLoaded('shops')),
+            'shops'=> $shops
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePlantShopRequest;
+use App\Http\Requests\UpdatePlantShopRequest;
 use App\Models\PlantShop;
 use Illuminate\Http\Request;
 use App\Http\Resources\PlantShopResource;
@@ -25,7 +27,7 @@ class PlantShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePlantShopRequest $request)
     {
         $plantShop = PlantShop::create($request->only([
             'plant_id', 'shop_id'
@@ -52,7 +54,7 @@ class PlantShopController extends Controller
     * @param  \App\Models\PlantShop  $plantShop
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request,PlantShop $plantShop)
+    public function update(UpdatePlantShopRequest $request,PlantShop $plantShop)
     {
         $plantShop->update($request->only([
             'plant_id', 'shop_id'

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProviderRequest extends FormRequest
+class UpdatePlantShopRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,11 +32,8 @@ class UpdateProviderRequest extends FormRequest
             //over written anyhow. 
 
             return [
-                'name' => ['bail','required','min:3','max:15'],
-                'logo' => ['required', 'url'],
-                'info' => ['required', 'min:3','max:255'],
-                'email' => ['required','email:rfc,dns'],
-                'telephone' => ['required']
+                'plant_id' => ['required', 'exists:plants,id'],
+                'shop_id' => ['required', 'exists:shops,id']
             ];
         }
         
@@ -44,13 +41,9 @@ class UpdateProviderRequest extends FormRequest
 
         else{
             return [
-                'name' => ['sometimes','required','min:3','max:15'],
-                'logo' => ['sometimes','required', 'url'],
-                'info' => ['sometimes','required', 'min:3','max:255'],
-                'email' => ['sometimes','required','email:rfc,dns'],
-                'telephone' => ['sometimes','required','digits:10']
+                'plant_id' => ['required', 'exists:plants,id'],
+                'shop_id' => ['required', 'exists:shops,id']
             ];
         }
-
     }
 }

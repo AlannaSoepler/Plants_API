@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProviderRequest extends FormRequest
+class UpdateShopRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,11 +32,9 @@ class UpdateProviderRequest extends FormRequest
             //over written anyhow. 
 
             return [
-                'name' => ['bail','required','min:3','max:15'],
-                'logo' => ['required', 'url'],
-                'info' => ['required', 'min:3','max:255'],
-                'email' => ['required','email:rfc,dns'],
-                'telephone' => ['required']
+                'name' => ['bail','required','max:15', 'min:3'],
+                'address' => ['required'],
+                'info' => ['required', 'min:3','max:255']
             ];
         }
         
@@ -44,13 +42,10 @@ class UpdateProviderRequest extends FormRequest
 
         else{
             return [
-                'name' => ['sometimes','required','min:3','max:15'],
-                'logo' => ['sometimes','required', 'url'],
-                'info' => ['sometimes','required', 'min:3','max:255'],
-                'email' => ['sometimes','required','email:rfc,dns'],
-                'telephone' => ['sometimes','required','digits:10']
+                'name' => ['bail','sometimes','required','max:15', 'min:3'],
+                'address' => ['sometimes','required'],
+                'info' => ['sometimes','required', 'min:3','max:255']
             ];
         }
-
     }
 }

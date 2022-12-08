@@ -42,15 +42,17 @@ Route::get('/shops', [ShopController::class, 'index']);
 Route::get('/shops/{shop}', [ShopController::class, 'show']);
 Route::post('/shops', [ShopController::class, 'store']);
 Route::put('/shops/{shop}', [ShopController::class, 'update']);
+Route::patch('/shops/{shop}', [ShopController::class, 'update']);
 Route::delete('/shops/{shop}', [ShopController::class, 'destroy']);
 
-
-
+//Should be deleted (or create a role and only some people can see it) after evaluation only added to remember login info.
+Route::get('/auth', [AuthController::class, 'index']);
 
 Route::get('/plantShop', [PlantShopController::class, 'index']);
 Route::get('/plantShop/{plantShop}', [PlantShopController::class, 'show']);
 Route::post('/plantShop', [PlantShopController::class, 'store']);
 Route::put('/plantShop/{plantShop}', [PlantShopController::class, 'update']);
+Route::patch('/plantShop/{plantShop}', [PlantShopController::class, 'update']);
 Route::delete('/plantShop/{plantShop}', [PlantShopController::class, 'destroy']);
 
 Route::get('/providers', [ProviderController::class, 'index']);
