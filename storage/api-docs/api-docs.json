@@ -13,6 +13,25 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/api/auth": {
+    "get": {
+      "tags": ["Users"],
+      "summary": "Try the api with this lovely user!",
+      "description": "Displays the tester user",
+      "operationId": "GetUsers",
+      "responses": {
+        "200": {
+          "description": "Successful operation, Returns a list of Plants in JSON format"
+        },
+        "401": {
+          "description": "Unauthenticated"
+        },
+        "403": {
+          "description": "Forbidden"
+        }
+      }
+    }
+  },
     "/api/plants": {
       "get": {
         "tags": ["Plants"],
@@ -90,6 +109,11 @@
                   "provider_id": {
                     "type": "number",
                     "example": "1"
+                  },
+                  "shops": {
+                    "type": "array",
+                    "format": "array",
+                    "example": [1]
                   }
                 },
                 "type": "object"
@@ -645,6 +669,295 @@
                     "status": {
                       "type": "integer",
                       "example": ""
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "bearerAuth": [] }]
+      }
+    },"/api/shops": {
+      "get": {
+        "tags": ["Shops"],
+        "summary": "Get all Shops",
+        "description": "Displays all the shops",
+        "operationId": "GetAllShops",
+        "responses": {
+          "200": {
+            "description": "Successful operation, Returns a list of Plants in JSON format"
+          },
+          "401": {
+            "description": "Unauthenticated"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      },"post": {
+        "tags": ["Shops"],
+        "summary": "Create a new Shop",
+        "description": "Stores the new shop in the DB",
+        "operationId": "StoreShop",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "name",
+                  "address",
+                  "info"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "Plant Shop"
+                  },
+                  "address": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "Avenue Street 12"
+                  },
+                  "info": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "We sell plants"
+                  },
+                  "plants": {
+                    "type": "array",
+                    "format": "array",
+                    "example": [1]
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": ""
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "bearerAuth": [] }]
+      }
+    },
+    "/api/shops/{id}": {
+      "get": {
+        "tags": ["Shops"],
+        "summary": "Get Shop by ID",
+        "description": "Gets a shop by ID",
+        "operationId": "GetShopID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Shop id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "401": {
+            "description": "Unauthenticated"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Shops"],
+        "summary": "Update a Shop",
+        "description": "Stores the shop in the DB",
+        "operationId": "update_patch_shop",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "shop id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": ["name", "address", "info"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "Plant inc."
+                  },
+                  "address": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "Avenue Street 12"
+                  },
+                  "info": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "Get wonderful plants"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": ""
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "bearerAuth": [] }]
+      },
+      "put": {
+        "tags": ["Shops"],
+        "summary": "Update a Shop",
+        "description": "Stores the shop in the DB",
+        "operationId": "update_put_Shop",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Shop id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "name",
+                  "address",
+                  "info"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "Shop inc."
+                  },
+                  "address": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "Avenue Street 12"
+                  },
+                  "info": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "the hibiscus is a wonderful plant"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": ""
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "bearerAuth": [] }]
+      },
+      "delete": {
+        "tags": ["Shops"],
+        "summary": "Delete a Shop",
+        "description": "Delete Shop",
+        "operationId": "destroy_shop",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Shop Id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status_code": {
+                      "type": "integer",
+                      "example": "204"
                     },
                     "data": {
                       "type": "object"

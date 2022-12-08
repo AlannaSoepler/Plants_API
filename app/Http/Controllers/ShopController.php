@@ -74,7 +74,7 @@ class ShopController extends Controller
      */
     public function destroy(Shop $shop)
     {
-        //$shop->shops()->detach();
+        $shop->plants()->detach();
         $shop->delete();
         // return response()->json(null, response::HTTP_NO_CONTENT);
         //returns a http response of 204 (no content), if there is no content to display
